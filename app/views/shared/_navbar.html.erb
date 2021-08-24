@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+    <%= link_to 'Twitter', root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <% if user_signed_in? %>
+                <%= image_tag current_user.photo, style: "width: 25px; border-radius: 150%" %>
+                <%= current_user.name %>
+                <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: "nav-item nav-link active" %>
+            <% else %>
+                <%= link_to 'Iniciar sesión', new_user_session_path, class: "nav-item nav-link active" %>
+                <%= link_to 'Registrarse', new_user_registration_path, class: "nav-item nav-link active" %>
+            <% end %>
+        </div>
+    </div>
+</nav>
