@@ -2,11 +2,11 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.limit(50)
     @tweet = Tweet.new
-    if user_signed_in?
-      render :index
-    else
-      redirect_to new_user_registration_path
-    end
+    # if user_signed_in?
+    #   render :index
+    # else
+    #   redirect_to new_user_registration_path
+    # end
   end
 
   def create
