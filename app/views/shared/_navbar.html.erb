@@ -15,7 +15,7 @@
                 <div class= "nav-item nav-link active"><%= current_user.name %></div>
                 <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: "nav-item nav-link active" %>
             <% else %>
-                <%= link_to 'Iniciar sesión', new_user_session_path, class: "nav-item nav-link active text-right" %>
+                <%= link_to 'Iniciar sesión', new_user_session_path, class: "nav-item nav-link active " %>
                 <%= link_to 'Registrarse', new_user_registration_path, class: "nav-item nav-link active" %>
             <% end %>
         </div>

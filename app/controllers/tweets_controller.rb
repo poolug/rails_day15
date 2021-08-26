@@ -1,12 +1,10 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!, only: [ :retweets, :show ] # solo si usuario está logeado puede hacer retweets
+  
   def index
-    @tweets = Tweet.limit(50)
+    # @tweets = Tweet.limit(50)
     @tweet = Tweet.new
-    # if user_signed_in?
-    #   render :index
-    # else
-    #   redirect_to new_user_registration_path
-    # end
+    @tweets = Tweet.all.page params[:page]
   end
 
   def create
@@ -28,5 +26,8 @@ class TweetsController < ApplicationController
     redirect_to root_path
   end
   
+  def show
+    @tweets = Tweet.find(params[:id])
+  end
 
 end

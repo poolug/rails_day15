@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :authenticate_user! #solo usuario authentificado pueden dar Like
+  before_action :authenticate_user! # solo si usuario está logeado puede dar likes
 
   def like
     @tweet = Tweet.find(params[:tweet_id])
@@ -8,9 +8,13 @@ class LikesController < ApplicationController
   end
 
   def dislike
-    tweet = Tweet.find(params[:id])#busca el id del tweet
-    like = tweet.likes.find_by(user: current_user)#se busca el like que comparta el tweet y el like
-    like.destroy #destruye el like
-    redirect_to root_path #dirreciona al root
+    tweet = Tweet.find(params[:tweet_id]) # busca el id del tweet
+    like = tweet.likes.find_by(user: current_user) # busca el like del tweet
+    if like == nil
+      redirect_to root_path
+    else
+    like.destroy # destruye el like
+    redirect_to root_path # redirección al root
+    end
   end
 end
