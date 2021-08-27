@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 
+.nv-perfomance {
+    box-shadow: 10px 10px 10px -6px black;
+    border-radius: 0px 0px 15px 15px;
+    // border: 2px solid black
+}
+
 body {
     background-color: rgb(180, 180, 180);
 }
@@ -20,5 +26,17 @@ a {
 
 .tweet-contain {
     box-shadow: 0px 0px 5px 1px black;
+    border: 2px solid black;
+    border-radius: 10px
+}
+
+.set-photo {
+    width: 100px;
+    border-radius: 150%
+}
+
+.card-body {
+    width: 100%;
+    border-radius: 10px;
     border: 2px solid black
 }
