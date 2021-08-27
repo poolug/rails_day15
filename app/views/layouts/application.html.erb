@@ -10,11 +10,12 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('twitter.png'), sizes:"180x180" %>
   </head>
 
   <body>
     <%= render "shared/navbar" %>
-    <div class="container pr-5">
+    <div class="container pr-5 pb-5">
       <p class="notice pt-5 text-center"><%= notice %></p>
       <p class="alert text-center"><%= alert %></p>
       <%= yield %>

@@ -2,9 +2,8 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!, only: [ :retweets, :show ] # solo si usuario está logeado puede hacer retweets
   
   def index
-    # @tweets = Tweet.limit(50)
     @tweet = Tweet.new
-    @tweets = Tweet.all.page params[:page]
+    @tweets = Tweet.all.order(created_at: :desc).page params[:page]
   end
 
   def create
