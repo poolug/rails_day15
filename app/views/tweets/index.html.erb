@@ -18,11 +18,11 @@
     <% if user_signed_in? %>
         <div class = 'form-group'>
             <%= f.label :content, "Ingresa tu tweet" %>
-            <%= f.text_area :content, placeholder: "¿Que quieres comentar hoy?", class: "form-control tweet-contain" %>
+            <%= f.text_area :content, placeholder: "¿Que está pasando?", class: "form-control tweet-contain" %>
         </div>
 
         <div class = 'actions'>
-            <%= f.submit "Twittear", class: "btn btn-success" %>
+            <%= f.submit "Twittear", class: "btn btn-success btn-tweetear" %>
         </div>
     <% end %>
 <% end %>

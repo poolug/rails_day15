@@ -2,12 +2,16 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!, only: [ :retweets, :show ] # solo si usuario está logeado puede hacer retweets
   
   def index
+    if params[:twt]
+      @tweets = Tweet.where('content LIKE ?', "%#{params[:twt]}%").order(created_at: :desc).page params[:page] # búsqueda parcial por el content del tweet
+    else
+      @tweets = Tweet.all.order(created_at: :desc).page params[:page]
+    end
     @tweet = Tweet.new
-    @tweets = Tweet.all.order(created_at: :desc).page params[:page]
   end
 
   def create
-    @tweets = Tweet.all
+    @tweets = Tweet.all.order(created_at: :desc).page params[:page]
     @tweet = Tweet.new(content: params[:tweet][:content])
     @tweet.user = current_user
     respond_to do |format|
@@ -21,9 +25,6 @@ class TweetsController < ApplicationController
   
   def retweets
     @tweet = Tweet.find(params[:id])
-    # new_tweet = Tweet.create(content: @tweet.content, user: current_user)
-    # @tweet.retweets << new_tweet
-    # redirect_to root_path
 
     @retweet = Tweet.new
     @retweet.content = @tweet.content
@@ -43,7 +44,7 @@ class TweetsController < ApplicationController
   end
   
   def show
-    @tweets = Tweet.find(params[:id])
+    # @tweet = Tweet.find(params[:id])class="alert alert-danger alert-dismissable pt-1"
   end
 
 end

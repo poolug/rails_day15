@@ -8,12 +8,24 @@
     border-radius: 0px 0px 15px 15px;
 }
 
+.btn-search, .btn-tweetear {border: 2px solid black
+}
+
+.user-photo {
+    width: 50px; border-radius: 150%
+}
+
 body {
     background-color: rgb(180, 180, 180);
+    padding-top: 3em
 }
 
 a {
     text-decoration: none !important;
+}
+
+.nav-item:hover {
+    text-decoration-line: underline;
 }
 
 .tweet-container {

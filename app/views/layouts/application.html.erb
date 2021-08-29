@@ -15,9 +15,10 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <div class="container pr-5 pb-5">
-      <p class="notice pt-5 text-center"><%= notice %></p>
-      <p class="alert text-center"><%= alert %></p>
+    <div class="container pr-5 pb-5 pt-5">
+      <% flash.each do | notice, value| %>
+        <div class="notice text-center"><%= value %></div>
+      <% end %>
       <%= yield %>
     </div>
   </body>
