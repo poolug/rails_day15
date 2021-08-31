@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :authenticate_user!, only: [ :retweets, :show ] # solo si usuario está logeado puede hacer retweets
+  before_action :authenticate_user!, only: [ :retweets, :show ] # solo si usuario está logeado puede acceder
   
   def index
     if params[:twt]
@@ -44,7 +44,8 @@ class TweetsController < ApplicationController
   end
   
   def show
-    # @tweet = Tweet.find(params[:id])class="alert alert-danger alert-dismissable pt-1"
+    @tweet = Tweet.find(params[:id])
+    # @tweet_likes = @tweet.likes
   end
 
 end

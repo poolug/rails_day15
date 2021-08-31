@@ -17,7 +17,7 @@
     <%= render "shared/navbar" %>
     <div class="container pr-5 pb-5 pt-5">
       <% flash.each do | notice, value| %>
-        <div class="notice text-center"><%= value %></div>
+        <div id="alert" class="notice text-center alert alert-primary"><%= value %></div>
       <% end %>
       <%= yield %>
     </div>

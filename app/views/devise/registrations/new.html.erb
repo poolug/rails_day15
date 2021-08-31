@@ -4,17 +4,17 @@
   <div class="text-center pl-5">
   <h2>Registrarse</h2><br>
     <div class="form-group">
-      <%= f.label :email, "Correo electrónico" %><br />
+      <%= f.label :email, "Correo electrónico" %> <br>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :name, "Nombre" %><br />
+      <%= f.label :name, "Nombre" %><br>
       <%= f.text_field :name, autocomplete: "name" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :photo, "Foto de Perfil (sólo URL)" %><br />
+      <%= f.label :photo, "Foto de Perfil (sólo URL)" %> <br>
       <%= f.url_field :photo, autocomplete: "photo" %>
     </div>
 
@@ -27,12 +27,13 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :password_confirmation, "Confirmar Contraseña" %><br />
+      <%= f.label :password_confirmation, "Confirmar Contraseña" %><br>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
     <div class="actions">
       <%= f.submit "Registrar", class: "btn btn-success" %>
-    </div>
+    </div><br>
+    <h6>¿Ya tienes una cuenta?</h6><%= link_to 'Inicia sesión', new_user_session_path, class: "btn btn-primary" %>
   </div>
 <% end %>
