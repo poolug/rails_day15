@@ -4,7 +4,7 @@ module TweetsHelper
         tag = []
         format_content.each do |c|
             if c.start_with?("#")
-                c = link_to c, controller: "tweets", twt: c
+                c = link_to c, controller: "tweets", q: c
             end
             tag << c
         end

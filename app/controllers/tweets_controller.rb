@@ -13,6 +13,7 @@ class TweetsController < ApplicationController
 
   def create
     @tweets = Tweet.all.order(created_at: :desc).page params[:page]
+    @likes = Like.where(user: current_user).pluck(:tweet_id)
     @tweet = Tweet.new(content: params[:tweet][:content])
     @tweet.user = current_user
     respond_to do |format|
