@@ -1,18 +1,20 @@
 <%= link_to '<- Volver', tweets_path, class: "btn btn-primary text-black mb-3 mt-3 " %>
 
-<% @tweet.each do |t| %>
-    <div class="card col-6 m-3 bg-secondary tweet-container" >
-        <div class="container text-left">
-            <!-- Imágen del usuario que hizo el tweet -->
-            <%= image_tag t.set_photo, class: "card-img-top pt-2 set-photo" %>
-            <!-- Nombre del usuario que hizo el tweet -->
-            <h6><%= t.set_user_name %> - Dice:</h6>
-        </div>
-        <div class="card-body bg-white">
-            <!-- Contenido del tweet -->
-            <p class="card-text"><%= t.content %></p>
-            <p class="mb-0">--</p>
-            <span><%= t.created_at %></span>
-        </div>
+
+<div class="card col-6 m-3 bg-secondary tweet-container" >
+    <div class="container text-left">
+        <!-- Imágen del usuario que hizo el tweet -->
+        <%= image_tag @tweet.set_photo, class: "card-img-top pt-2 set-photo" %>
+        <!-- Nombre del usuario que hizo el tweet -->
+        <h6><%= @tweet.set_user_name %> - Dice:</h6>
     </div>
-<% end %>
+    <div class="card-body bg-white">
+        <!-- Contenido del tweet -->
+        <p class="card-text"><%= @tweet.content %></p>
+        <p class="mb-0">--</p>
+        <span><%= @tweet.created_at %></span>
+    </div>
+    <% @tweet_likes.each do |like| %>
+        <%= like.user.email %>
+    <% end %>
+</div>

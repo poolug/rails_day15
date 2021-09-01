@@ -33,7 +33,7 @@
         </ul>
 
         <%= form_with(url: root_path, method: :get, local: :true, class:"form-inline my-2 my-lg-0") do %>
-            <%= text_field_tag :twt, "", placeholder:"¿Que quieres encontrar?", class: "form-control mr-sm-2" %>
+            <%= text_field_tag :q, "", placeholder:"¿Que quieres encontrar?", class: "form-control mr-sm-2" %>
             <%= submit_tag("Buscar", class:"btn btn-success my-2 my-sm-0 btn-search") %>
         <% end %>
     </div>

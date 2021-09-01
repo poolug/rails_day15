@@ -54,7 +54,7 @@
                             </svg>
                         <% end %>
                     <span><span><%= t.set_rt_count %></span>
-                    <% if t.set_likes_count == 1 %>
+                    <% if @likes.include? t.id %>
                         <span>
                         <%= link_to dislike_path(t.id), method: :post do %>
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart-broken" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
