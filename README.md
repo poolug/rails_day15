@@ -2,6 +2,11 @@
 
 * https://twitter1-poolug.herokuapp.com/
 
+_Credenciales Active Admin_
+```
+email: 'admin@example.com'
+password: 'password'
+```
 ### Pre-requisitos 📋
 
 _Versión de Ruby_
@@ -17,6 +22,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'kaminari'
+gem 'activeadmin'
 ```
 
 ### Instalación 🔧
