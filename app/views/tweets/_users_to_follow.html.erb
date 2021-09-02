@@ -1,0 +1,10 @@
+<div>
+    <% @users.each do |user| %>
+        <% if user.can_follow? %>
+            <%= image_tag user.photo, class:"rounded-circle", style:"border: 2px solid black" %>
+            <%= link_to follow_path(user.id), class:"btn btn-success", method: :post do %>
+                <%= "Seguir" %>
+            <% end %>
+        <% end %>
+    <% end %>
+</div>

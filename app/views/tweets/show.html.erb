@@ -1,10 +1,9 @@
-<%= link_to '<- Volver', tweets_path, class: "btn btn-primary text-black mb-3 mt-3 " %>
+<%= link_to '<- Volver', tweets_path, class: "btn btn-primary mb-3 mt-3 btn-tweetear" %>
 
-
-<div class="card col-6 m-3 bg-secondary tweet-container" >
+<div class="card col-12 pb-3 bg-secondary tweet-container" >
     <div class="container text-left">
         <!-- Imágen del usuario que hizo el tweet -->
-        <%= image_tag @tweet.set_photo, class: "card-img-top pt-2 set-photo" %>
+        <%= image_tag @tweet.set_photo, class: "card-img-top pt-2 rounded-circle" %>
         <!-- Nombre del usuario que hizo el tweet -->
         <h6><%= @tweet.set_user_name %> - Dice:</h6>
     </div>
@@ -12,9 +11,20 @@
         <!-- Contenido del tweet -->
         <p class="card-text"><%= @tweet.content %></p>
         <p class="mb-0">--</p>
-        <span><%= @tweet.created_at %></span>
+        <span><%= @tweet.created_at.strftime("%d-%m-%Y %H:%M") %></span>
     </div>
-    <% @tweet_likes.each do |like| %>
-        <%= like.user.email %>
-    <% end %>
-</div>
+</div><br><br>
+
+<% if @tweet.set_likes_count == 0 %>
+    <h2 class="alert alert-danger pt-1">oh! :( nadie le ha dado like a este tweet </h2>
+    <% else %>
+    <h2 class="alert alert-success pt-1">Estos usuarios le han dado like al tweet</h2>
+<% end %>
+
+<% @tweet_likes.each do |like| %>
+    <div class="card col-12 pb-3 mt-3 bg-secondary tweet-container">
+        <%= image_tag like.user.photo, class: "card-img-top pt-2 rounded-circle" %>
+        <%= like.user.name %>
+        <hr>
+    </div>
+<% end %>

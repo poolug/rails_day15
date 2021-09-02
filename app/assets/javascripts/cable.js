@@ -11,13 +11,3 @@
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
-
-$('#alert').fadeIn();     
-  setTimeout(function() {
-    $("#alert").fadeOut();           
-  },2000);
-
-// function myTimer() {
-//   const d = new Date();
-//   document.getElementById("demo").innerHTML = d.toLocaleTimeString();
-// }

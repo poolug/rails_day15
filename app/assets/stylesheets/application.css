@@ -10,6 +10,61 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= stub active_admin
  *= require_tree .
  *= require_self
  */
+
+.nv-perfomance {
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    border-radius: 0px 0px 15px 15px;
+}
+
+.btn-search, .btn-tweetear {border: 2px solid black
+}
+
+.user-photo {
+    width: 50px; border-radius: 150%
+}
+
+body {
+    background-color: rgb(180, 180, 180);
+    padding-top: 3em
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.nav-item:hover {
+    color: whitesmoke !important;
+    text-decoration-line: underline;
+}
+
+.tweet-container {
+    box-shadow: 10px 10px 10px -6px black;
+    border-radius: 25px;
+    border: 2px solid black
+}
+
+.tweet-contain {
+    box-shadow: 0px 0px 5px 1px black;
+    border: 2px solid black;
+    border-radius: 10px
+}
+
+.rounded-circle {
+    width: 90px;
+    height: 90px;
+}
+
+.rounded-circle2 {
+    width: 60px;
+    height: 60px;
+    border-radius: 80px
+}
+
+.card-body {
+    border-radius: 10px;
+    border: 2px solid black
+}

@@ -6,8 +6,11 @@ class Tweet < ApplicationRecord
     has_many :retweets, class_name: "Tweet", foreign_key: "tweet_id", dependent: :destroy
     belongs_to :original_tweet, class_name: "Tweet", foreign_key: "tweet_id", optional: true
 
-    paginates_per 50 #límites de registros a mostrar por página
+    # límites de registros a mostrar por página
+    paginates_per 50
     
+    scope :tweets_for_me, -> (user) { where(:user_id => user.followeds.ids )}
+
     def set_photo
         self.user.photo
     end

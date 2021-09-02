@@ -17,3 +17,9 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// Muestra el alert, con duración de 3seg
+$('#alert').fadeIn();     
+    setTimeout(function() {
+        $("#alert").fadeOut();           
+    },3000);

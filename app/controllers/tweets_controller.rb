@@ -1,17 +1,27 @@
 class TweetsController < ApplicationController
-  before_action :authenticate_user!, only: [ :retweets, :show ] # solo si usuario está logeado puede acceder
+  # solo si usuario está logeado puede acceder
+  before_action :authenticate_user!, only: [ :retweets, :show ]
   
   def index
     if params[:q]
-      @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%").order(created_at: :desc).page params[:page] # búsqueda parcial por el content del tweet
+      # búsqueda parcial por el content del tweet
+      @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%").order(created_at: :desc).page params[:page]
+    elsif user_signed_in?
+      @tweets = Tweet.tweets_for_me(current_user).order(created_at: :desc).page params[:page]
     else
       @tweets = Tweet.all.order(created_at: :desc).page params[:page]
+      # @tweets = Tweet.eager_load(:user, :likes).order(created_at: :desc).page params[:page]
     end
     @tweet = Tweet.new
     @likes = Like.where(user: current_user).pluck(:tweet_id)
+    @users = User.all
+    # @users = User.where('id IS NOT ?', current_user.id).last(5) if user_signed_in? # Error en Heroku
+    # @users = User.where.not(user_id, current_user.id).last(5) if user_signed_in?
+
   end
 
   def create
+    @users = User.all
     @tweets = Tweet.all.order(created_at: :desc).page params[:page]
     @likes = Like.where(user: current_user).pluck(:tweet_id)
     @tweet = Tweet.new(content: params[:tweet][:content])
@@ -37,7 +47,7 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @retweet.save
-        format.html { redirect_to root_path, notice: "¡RT creado con éxito!" }
+        format.html { redirect_to root_path, notice: "¡Haz hecho un RT éxito!" }
       else
         format.html { render :index }
       end
