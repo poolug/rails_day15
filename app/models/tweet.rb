@@ -9,7 +9,7 @@ class Tweet < ApplicationRecord
     # límites de registros a mostrar por página
     paginates_per 50
     
-    scope :tweets_for_me, -> (user) { where(:user_id => user.followeds.ids) }
+    scope :tweets_for_me, -> (user) { where(:user_id => user.followeds.pluck(:followed_id)) }
 
     def set_photo
         self.user.photo
