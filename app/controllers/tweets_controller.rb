@@ -7,16 +7,15 @@ class TweetsController < ApplicationController
       # búsqueda parcial por el content del tweet
       @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%").order(created_at: :desc).page params[:page]
     elsif user_signed_in?
-      @tweets = Tweet.tweets_for_me(current_user).order(created_at: :desc).page params[:page]
+      @tweets = Tweet.tweets_for_me(current_user).or(current_user.tweets).order(created_at: :desc).page params[:page]
     else
       @tweets = Tweet.all.order(created_at: :desc).page params[:page]
       # @tweets = Tweet.eager_load(:user, :likes).order(created_at: :desc).page params[:page]
     end
     @tweet = Tweet.new
     @likes = Like.where(user: current_user).pluck(:tweet_id)
-    @users = User.all
     # @users = User.where('id IS NOT ?', current_user.id).last(5) if user_signed_in? # Error en Heroku
-    # @users = User.where.not(user_id, current_user.id).last(5) if user_signed_in?
+    @users = User.where.not(id: current_user.id).last(5) if user_signed_in?
 
   end
 
