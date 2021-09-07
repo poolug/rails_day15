@@ -101,15 +101,15 @@
                         <div class="card-body bg-white mb-3">
                             <p class="card-text"><%= t.set_origin_content %></p>
                             <p class="mb-0">--</p>
-                            <span><%= link_to distance_of_time_in_words(Time.now, t.created_at), t %></span>
+                            <%= link_to distance_of_time_in_words(Time.now, t.set_origin_date), ("tweets/#{t.tweet_id.to_s}") %>
                         </div>
                     </div>
-
                 </div>
                 <!-- Botones likes & retweet -->
                 <div class="text-center pt-2 pb-2">
+                <span class="pr-5"><%= link_to distance_of_time_in_words(Time.now, t.created_at), t %></span>
+                    <!-- Retweet -->
                     <span>
-                        <!-- Retweet -->
                         <%= link_to retweets_path(t.id), method: :post do %>
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-repeat" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round" >
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

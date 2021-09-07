@@ -7,6 +7,16 @@ _Credenciales Active Admin_
 email: 'admin@example.com'
 password: 'password'
 ```
+
+_Consultas con API_
+```
+# Últimos 50 tweets
+http://localhost:3000/api/v1/tweets/last
+
+# Tweets entre las fechas indicadas
+http://localhost:3000/api/v1/tweets/2021-09-01/2021-09-04
+```
+
 ### Pre-requisitos 📋
 
 _Versión de Ruby_
